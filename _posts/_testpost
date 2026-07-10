@@ -1,13 +1,9 @@
 ---
 layout: post
 title: "Chlamydomonas reinhardtii"
-tags: ["Collection locations", "Strain information", "Associated Literature", "Culturing notes"]
-
-# Custom variables that feed into your separate pages:
+tags: ["Strain information", "Culturing notes"]
 strain_id: "UTEX 2244"
-locality: "Freshwater retention basin, Maryland, USA"
-culture_brief: "Requires TAP or BG-11 medium, 16:8 light cycle, subculture every 3 weeks."
-literature_citations: "1. Harris, E. H. (2009). The Chlamydomonas Sourcebook.\n2. Merchant, S. S., et al. (2007). Science, 318(5848)."
 ---
 
 ## Full Specimen Profile
+This is where your regular text, description, and microscopy images for Chlamydomonas go.
