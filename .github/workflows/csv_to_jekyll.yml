@@ -1,6 +1,7 @@
 name: Generate Posts from CSV
 
 on:
+  workflow_dispatch: # <--- This creates the manual run button!
   push:
     paths:
       - 'algae_data.csv'
