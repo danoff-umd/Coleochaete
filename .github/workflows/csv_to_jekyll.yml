@@ -3,17 +3,17 @@ name: Generate Posts from CSV
 on:
   push:
     paths:
-      - 'algae_data.csv' # Runs only when this file changes
+      - 'algae_data.csv'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6 # <--- Updated to v6
 
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6 # <--- Updated to v6
       with:
         python-version: '3.x'
 
