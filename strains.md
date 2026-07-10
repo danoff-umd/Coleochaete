@@ -4,9 +4,19 @@ title: "Strain Information"
 permalink: /strains/
 ---
 
-Access comprehensive strain IDs, taxonomic lineages, and morphology metadata. All the taxonomic names I may put on these strains are strictly to describe what it looks most like. There is a lot more diversity in species than previously anticipated and will need to be verified in the future with genetic data.
+Access comprehensive strain IDs, taxonomic lineages, and morphology metadata for our active algae collection.
 
 ## Catalogued Strains
-{% for post in site.tags["Strain information"] %}
-* [{{ post.title }}]({{ post.url }}) - *Strain: {{ post.strain_id }}*
-{% endfor %}
+
+<ul>
+  {% for post in site.posts %}
+    {% if post.tags contains "Strain information" %}
+      <li>
+        <strong><a href="{{ post.url | relative_url }}">{{ post.title }}</a></strong> 
+        {% if post.strain_id %}
+          — <code>Strain: {{ post.strain_id }}</code>
+        {% endif %}
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
