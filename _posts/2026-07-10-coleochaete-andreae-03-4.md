@@ -1,6 +1,6 @@
 ---
 layout: pos
-title: "Coleochaete andreae - AMD-PX-03.4"
+title: "Coleochaete andreae"
 tags: ["Strain information", "Collection locations", "Associated Literature", "Culturing notes"]
 strain_id: "AMD-PX-03.4"
 locality: "Snowden Pond, Patuxent Research Refuge, Maryland, USA"
