@@ -1,6 +1,6 @@
 ---
-layout: post
-title: "Chlamydomonas reinhardtii"
+layout: pos
+title: "Chlamydomonas reinhardtii - UTEX 2244"
 tags: ["Strain information", "Collection locations", "Associated Literature", "Culturing notes"]
 strain_id: "UTEX 2244"
 locality: "Freshwater retention basin, Maryland, USA"
