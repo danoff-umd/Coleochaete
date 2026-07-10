@@ -1,3 +1,4 @@
+Python
 import csv
 import os
 from datetime import datetime
@@ -22,7 +23,9 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
             continue 
 
         date_str = datetime.now().strftime("%Y-%m-%d")
-        clean_title = title.lower().replace(" ", "-")
+        
+        # FIX: Swap slashes for dashes so Python doesn't think it's a folder
+        clean_title = title.lower().replace(" ", "-").replace("/", "-").replace("\\", "-")
         filename = f"_posts/{date_str}-{clean_title}.md"
         
         markdown_content = f"""---
