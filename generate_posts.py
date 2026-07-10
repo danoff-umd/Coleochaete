@@ -2,7 +2,7 @@ import csv
 from datetime import datetime
 
 # Open your uploaded spreadsheet
-with open('algae_data.csv', mode='r', encoding='utf-8') as f:
+with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
     reader = csv.DictReader(f)
     
     for row in reader:
