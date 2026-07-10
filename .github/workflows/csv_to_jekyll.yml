@@ -1,0 +1,29 @@
+name: Generate Posts from CSV
+
+on:
+  push:
+    paths:
+      - 'algae_data.csv' # Runs only when this file changes
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Run generation script
+      run: python generate_posts.py
+
+    - name: Commit generated posts back to repo
+      run: |
+        git config --global user.name 'GitHub Actions Bot'
+        git config --global user.email 'actions@github.com'
+        git add _posts/*.md
+        git diff-index --quiet HEAD || git commit -m "Auto-generated posts from csv"
+        git push
