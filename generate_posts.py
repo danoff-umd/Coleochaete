@@ -9,7 +9,6 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
     reader = csv.DictReader(f)
     
     reader.fieldnames = [name.strip().lower() for name in reader.fieldnames if name]
-    print(f"Detected columns: {reader.fieldnames}")
     
     for row in reader:
         title = row.get('title', '').strip()
@@ -23,9 +22,15 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
 
         date_str = datetime.now().strftime("%Y-%m-%d")
         
-        # FIX: Swap slashes for dashes so Python doesn't think it's a folder
+        # Clean both the title and the strain ID
         clean_title = title.lower().replace(" ", "-").replace("/", "-").replace("\\", "-")
-        filename = f"_posts/{date_str}-{clean_title}.md"
+        clean_strain = strain_id.lower().replace(" ", "-").replace("/", "-").replace("\\", "-")
+        
+        # Fuse them together so every row creates a 100% unique file
+        if clean_strain:
+            filename = f"_posts/{date_str}-{clean_title}-{clean_strain}.md"
+        else:
+            filename = f"_posts/{date_str}-{clean_title}.md"
         
         markdown_content = f"""---
 layout: post
