@@ -1,18 +1,17 @@
 import csv
+import os
 from datetime import datetime
 
-# Open your uploaded spreadsheet with the BOM fix
+# Force the server to create the _posts folder if it is missing
+os.makedirs('_posts', exist_ok=True)
+
 with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
     reader = csv.DictReader(f)
     
-    # Strip accidental spaces and force lowercase on all headers
     reader.fieldnames = [name.strip().lower() for name in reader.fieldnames if name]
-    
-    # Print what Python actually sees so we can read it in the logs
     print(f"Detected columns: {reader.fieldnames}")
     
     for row in reader:
-        # Grab the data using .get() so it doesn't crash if a column is missing
         title = row.get('title', '').strip()
         strain_id = row.get('strain_id', '').strip()
         locality = row.get('locality', '').strip()
@@ -20,7 +19,7 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
         tags = row.get('tags', '').strip()
 
         if not title:
-            continue # Skip empty rows
+            continue 
 
         date_str = datetime.now().strftime("%Y-%m-%d")
         clean_title = title.lower().replace(" ", "-")
