@@ -12,7 +12,7 @@ if os.path.exists('_posts'):
 
 os.makedirs('_posts', exist_ok=True)
 
-BASE_IMAGE_DIR = '_assets/images'
+BASE_IMAGE_DIR = 'assets/images'
 
 def normalize_name(name):
     return name.lower().replace(" ", "").replace("-", "").replace("_", "").replace(".", "").replace("/", "").replace("\\", "")
