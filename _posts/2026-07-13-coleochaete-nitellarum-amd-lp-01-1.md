@@ -11,6 +11,8 @@ culture_brief: "HEPES-WC"
 * **Strain ID:** AMD-LP-01-1
 * **Collection Locality:** Lilypons, Maryland, USA
 
+### Specimen Photo Gallery
+*No images available for this specimen yet.*
 
 
 ### Notes

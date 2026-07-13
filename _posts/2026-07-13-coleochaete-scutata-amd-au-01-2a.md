@@ -11,6 +11,8 @@ culture_brief: "HEPES-WC"
 * **Strain ID:** AMD-AU-01-2a
 * **Collection Locality:** Busby's Pond, Australia
 
+### Specimen Photo Gallery
+*No images available for this specimen yet.*
 
 
 ### Notes

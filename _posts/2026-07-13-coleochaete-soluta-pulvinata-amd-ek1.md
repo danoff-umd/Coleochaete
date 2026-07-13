@@ -11,6 +11,8 @@ culture_brief: "MES-Volvox"
 * **Strain ID:** AMD-EK1
 * **Collection Locality:** Erickson Lake, Wisconsin, USA
 
+### Specimen Photo Gallery
+*No images available for this specimen yet.*
 
 
 ### Notes

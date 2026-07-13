@@ -11,6 +11,8 @@ culture_brief: "HEPES-WC"
 * **Strain ID:** AMD-PX-00-1a
 * **Collection Locality:** Cash Lake, Patuxent Research Refuge, Maryland, USA
 
+### Specimen Photo Gallery
+*No images available for this specimen yet.*
 
 
 ### Notes

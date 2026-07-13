@@ -11,6 +11,8 @@ culture_brief: "HEPES-WC"
 * **Strain ID:** AMD-PX-03-2
 * **Collection Locality:** Snowden Lake, Patuxent Research Refuge, Maryland, USA
 
+### Specimen Photo Gallery
+*No images available for this specimen yet.*
 
 
 ### Notes

@@ -11,6 +11,8 @@ culture_brief: "MES-Volvox"
 * **Strain ID:** AMD-TH1
 * **Collection Locality:** Lake Tomahawk, Wisconsin, USA
 
+### Specimen Photo Gallery
+*No images available for this specimen yet.*
 
 
 ### Notes

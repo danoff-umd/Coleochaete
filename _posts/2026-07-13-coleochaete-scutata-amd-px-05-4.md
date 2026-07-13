@@ -11,6 +11,8 @@ culture_brief: "HEPES-WC"
 * **Strain ID:** AMD-PX-05-4
 * **Collection Locality:** Iris Pond, Patuxent Research Refuge, Maryland, USA
 
+### Specimen Photo Gallery
+*No images available for this specimen yet.*
 
 
 ### Notes
