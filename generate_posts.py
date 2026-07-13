@@ -114,7 +114,3 @@ Automated entry generated from master repository spreadsheet.
             out_file.write(markdown_content)
 
 print("All posts processed cleanly!")
-        with open(filename, 'w', encoding='utf-8') as out_file:
-            out_file.write(markdown_content)
-
-print("Purged old entries and successfully generated fresh algae profiles!")
