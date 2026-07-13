@@ -3,24 +3,31 @@ import os
 import shutil
 from datetime import datetime
 
-# ==========================================
-# 1. CLEAN SLATE: PURGE DUPLICATES
-# ==========================================
 if os.path.exists('_posts'):
     shutil.rmtree('_posts')
-
 os.makedirs('_posts', exist_ok=True)
 
-# Master folder where your strain image folders live
 BASE_IMAGE_DIR = 'assets/images'
 
-# Helper function to normalize text for flexible matching (removes spaces, dashes, dots, case)
 def normalize_name(name):
     return name.lower().replace(" ", "").replace("-", "").replace("_", "").replace(".", "").replace("/", "").replace("\\", "")
 
 # ==========================================
-# 2. READ CSV AND GENERATE POSTS
+# 🚨 DIAGNOSTICS: PRINT WHAT THE SERVER SEES
 # ==========================================
+print("=== SERVER DIAGNOSTIC REPORT ===")
+if os.path.exists(BASE_IMAGE_DIR):
+    print(f"SUCCESS: Found directory '{BASE_IMAGE_DIR}'. Contents:")
+    for item in os.listdir(BASE_IMAGE_DIR):
+        item_path = os.path.join(BASE_IMAGE_DIR, item)
+        if os.path.isdir(item_path):
+            files = os.listdir(item_path)
+            print(f" 📂 FOLDER: {item} | Normalized: {normalize_name(item)} | Contains {len(files)} files: {files[:3]}...")
+else:
+    print(f"❌ ERROR: Could not find the directory '{BASE_IMAGE_DIR}' on the server!")
+print("================================")
+# ==========================================
+
 with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
     reader = csv.DictReader(f)
     reader.fieldnames = [name.strip().lower() for name in reader.fieldnames if name]
@@ -36,26 +43,17 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
             continue 
 
         date_str = datetime.now().strftime("%Y-%m-%d")
-        
-        # Lowercase clean names used solely for the file paths
         clean_title = title.lower().replace(" ", "-").replace("/", "-").replace("\\", "-")
         clean_strain = strain_id.lower().replace(" ", "-").replace("/", "-").replace("\\", "-")
         
-        if clean_strain:
-            filename = f"_posts/{date_str}-{clean_title}-{clean_strain}.md"
-        else:
-            filename = f"_posts/{date_str}-{clean_title}.md"
+        filename = f"_posts/{date_str}-{clean_title}-{clean_strain}.md" if clean_strain else f"_posts/{date_str}-{clean_title}.md"
             
-        # ==========================================
-        # 3. AUTOMATED IMAGE SEARCH LOOP
-        # ==========================================
         image_markdown = ""
         
         if strain_id and os.path.isdir(BASE_IMAGE_DIR):
             target_normal = normalize_name(strain_id)
             matched_folder = None
             
-            # Scan your assets/images directory for a matching folder name
             for folder in os.listdir(BASE_IMAGE_DIR):
                 folder_path = os.path.join(BASE_IMAGE_DIR, folder)
                 if os.path.isdir(folder_path):
@@ -63,34 +61,26 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
                         matched_folder = folder
                         break
             
-            # If we found a matching folder, pull its images
             if matched_folder:
                 strain_img_folder = f"{BASE_IMAGE_DIR}/{matched_folder}"
                 valid_exts = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
                 img_files = sorted([img for img in os.listdir(strain_img_folder) if img.lower().endswith(valid_exts)])
                 
                 if img_files:
-                    # Show the first 3 images normally
                     for img in img_files[:3]:
                         web_path = f"/{strain_img_folder}/{img}"
                         image_markdown += f"![{title}]({web_path})\n\n"
                         
-                    # Drop the rest inside the hidden expandable drawer
                     if len(img_files) > 3:
-                        image_markdown += "<details>\n"
-                        image_markdown += "  <summary><strong>View all images</strong></summary>\n\n"
+                        image_markdown += "<details>\n  <summary><strong>View all images</strong></summary>\n\n"
                         for img in img_files[3:]:
                             web_path = f"/{strain_img_folder}/{img}"
                             image_markdown += f"  <img src='{web_path}' alt='{title}' style='max-width:100%; margin-bottom:15px;'>\n"
                         image_markdown += "</details>\n"
         
-        # If no folder match was found, give a placeholder notice
         if not image_markdown:
             image_markdown = "*No images available for this specimen yet.*\n"
 
-        # ==========================================
-        # 4. MARKDOWN LAYOUT TEMPLATE
-        # ==========================================
         markdown_content = f"""---
 layout: post
 title: "{title}"
