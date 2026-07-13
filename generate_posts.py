@@ -79,14 +79,14 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
                 if img_files:
                     for img in img_files[:3]:
                         # NOTE: Replace 'Your-Repository-Name' with your actual repository name!
-                        web_path = f"/Your-Repository-Name/{strain_img_folder}/{img}"
+                        web_path = f"/Coleochaete/{strain_img_folder}/{img}"
                         image_markdown += f"![{title}]({web_path})\n\n"
                         
                     if len(img_files) > 3:
                         image_markdown += "<details>\n"
                         image_markdown += "  <summary><strong>View all images</strong></summary>\n\n"
                         for img in img_files[3:]:
-                            web_path = f"/Your-Repository-Name/{strain_img_folder}/{img}"
+                            web_path = f"/Coleochaete/{strain_img_folder}/{img}"
                             image_markdown += f"  <img src='{web_path}' alt='{title}' style='max-width:100%; margin-bottom:15px;'>\n"
                         image_markdown += "</details>\n"
         
