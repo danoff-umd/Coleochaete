@@ -3,31 +3,22 @@ import os
 import shutil
 from datetime import datetime
 
+# ==========================================
+# 1. CLEAN SLATE: PURGE DUPLICATES
+# ==========================================
 if os.path.exists('_posts'):
     shutil.rmtree('_posts')
+
 os.makedirs('_posts', exist_ok=True)
 
-BASE_IMAGE_DIR = '_assets/images'
+BASE_IMAGE_DIR = 'assets/images'
 
 def normalize_name(name):
     return name.lower().replace(" ", "").replace("-", "").replace("_", "").replace(".", "").replace("/", "").replace("\\", "")
 
 # ==========================================
-# 🚨 DIAGNOSTICS: PRINT WHAT THE SERVER SEES
+# 2. READ CSV AND GENERATE POSTS
 # ==========================================
-print("=== SERVER DIAGNOSTIC REPORT ===")
-if os.path.exists(BASE_IMAGE_DIR):
-    print(f"SUCCESS: Found directory '{BASE_IMAGE_DIR}'. Contents:")
-    for item in os.listdir(BASE_IMAGE_DIR):
-        item_path = os.path.join(BASE_IMAGE_DIR, item)
-        if os.path.isdir(item_path):
-            files = os.listdir(item_path)
-            print(f" 📂 FOLDER: {item} | Normalized: {normalize_name(item)} | Contains {len(files)} files: {files[:3]}...")
-else:
-    print(f"❌ ERROR: Could not find the directory '{BASE_IMAGE_DIR}' on the server!")
-print("================================")
-# ==========================================
-
 with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
     reader = csv.DictReader(f)
     reader.fieldnames = [name.strip().lower() for name in reader.fieldnames if name]
@@ -43,11 +34,18 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
             continue 
 
         date_str = datetime.now().strftime("%Y-%m-%d")
+        
         clean_title = title.lower().replace(" ", "-").replace("/", "-").replace("\\", "-")
         clean_strain = strain_id.lower().replace(" ", "-").replace("/", "-").replace("\\", "-")
         
-        filename = f"_posts/{date_str}-{clean_title}-{clean_strain}.md" if clean_strain else f"_posts/{date_str}-{clean_title}.md"
+        if clean_strain:
+            filename = f"_posts/{date_str}-{clean_title}-{clean_strain}.md"
+        else:
+            filename = f"_posts/{date_str}-{clean_title}.md"
             
+        # ==========================================
+        # 3. AUTOMATED IMAGE SEARCH LOOP
+        # ==========================================
         image_markdown = ""
         
         if strain_id and os.path.isdir(BASE_IMAGE_DIR):
@@ -63,28 +61,41 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
             
             if matched_folder:
                 strain_img_folder = f"{BASE_IMAGE_DIR}/{matched_folder}"
-                valid_exts = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
-                img_files = sorted([img for img in os.listdir(strain_img_folder) if img.lower().endswith(valid_exts)])
                 
-            if img_files:
-                    # Show the first 3 images normally
+                # --- THE CASE-SENSITIVITY FIX ---
+                # Force every file in the folder to lowercase before processing
+                for item in os.listdir(strain_img_folder):
+                    lower_item = item.lower()
+                    if item != lower_item:
+                        old_path = os.path.join(strain_img_folder, item)
+                        new_path = os.path.join(strain_img_folder, lower_item)
+                        os.rename(old_path, new_path)
+                # --------------------------------
+                
+                valid_exts = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
+                # Now that everything is safely lowercase, grab the images
+                img_files = sorted([img for img in os.listdir(strain_img_folder) if img.endswith(valid_exts)])
+                
+                if img_files:
                     for img in img_files[:3]:
-                        # The 4 curly braces tell Python to literally write {{ site.baseurl }}
-                        web_path = f"{{{{ site.baseurl }}}}/{strain_img_folder}/{img}"
+                        # NOTE: Replace 'Your-Repository-Name' with your actual repository name!
+                        web_path = f"/Your-Repository-Name/{strain_img_folder}/{img}"
                         image_markdown += f"![{title}]({web_path})\n\n"
                         
-                    # Drop the rest inside the hidden expandable drawer
                     if len(img_files) > 3:
                         image_markdown += "<details>\n"
                         image_markdown += "  <summary><strong>View all images</strong></summary>\n\n"
                         for img in img_files[3:]:
-                            web_path = f"{{{{ site.baseurl }}}}/{strain_img_folder}/{img}"
+                            web_path = f"/Your-Repository-Name/{strain_img_folder}/{img}"
                             image_markdown += f"  <img src='{web_path}' alt='{title}' style='max-width:100%; margin-bottom:15px;'>\n"
                         image_markdown += "</details>\n"
         
         if not image_markdown:
             image_markdown = "*No images available for this specimen yet.*\n"
 
+        # ==========================================
+        # 4. MARKDOWN LAYOUT TEMPLATE
+        # ==========================================
         markdown_content = f"""---
 layout: post
 title: "{title}"
@@ -107,4 +118,4 @@ Automated entry generated from master repository spreadsheet.
         with open(filename, 'w', encoding='utf-8') as out_file:
             out_file.write(markdown_content)
 
-print("All posts processed cleanly!")
+print("All posts processed cleanly, and image cases have been standardized!")
