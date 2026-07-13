@@ -27,36 +27,39 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
         clean_title = title.lower().replace(" ", "-").replace("/", "-").replace("\\", "-")
         clean_strain = strain_id.lower().replace(" ", "-").replace("/", "-").replace("\\", "-")
         
+        # Determine the file name and the target image folder name
         if clean_strain:
             filename = f"_posts/{date_str}-{clean_title}-{clean_strain}.md"
+            target_folder_name = clean_strain
         else:
             filename = f"_posts/{date_str}-{clean_title}.md"
+            target_folder_name = clean_title # Fallback to title if no strain ID exists
             
         # --- AUTOMATED FOLDER IMAGE GRABBER ---
         image_markdown = ""
-        if clean_strain:
-            strain_img_folder = os.path.join(BASE_IMAGE_DIR, clean_strain)
+        
+        # SAFETY LOCK: Ensure we have a valid folder name to look for
+        if target_folder_name:
+            # Build the exact path: e.g., assets/images/utex-2244
+            strain_img_folder = f"{BASE_IMAGE_DIR}/{target_folder_name}"
             
-            # If a folder exists for this strain, look inside it
-            if os.path.isdir(strain_img_folder):
+            # Ensure it actually exists and is NOT the base directory
+            if strain_img_folder != BASE_IMAGE_DIR and os.path.isdir(strain_img_folder):
                 valid_exts = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
-                # Grab all image files and sort them alphabetically/numerically
                 img_files = sorted([img for img in os.listdir(strain_img_folder) if img.lower().endswith(valid_exts)])
                 
                 if img_files:
                     image_markdown += "### Specimen Images\n\n"
                     
-                    # Display the first 3 images normally
                     for img in img_files[:3]:
-                        web_path = f"/{BASE_IMAGE_DIR}/{clean_strain}/{img}"
+                        web_path = f"/{strain_img_folder}/{img}"
                         image_markdown += f"![{title}]({web_path})\n\n"
                         
-                    # If there are more than 3, create the clickable dropdown
                     if len(img_files) > 3:
                         image_markdown += "<details>\n"
                         image_markdown += "  <summary><strong>View all images</strong></summary>\n\n"
                         for img in img_files[3:]:
-                            web_path = f"/{BASE_IMAGE_DIR}/{clean_strain}/{img}"
+                            web_path = f"/{strain_img_folder}/{img}"
                             image_markdown += f"  <img src='{web_path}' alt='{title}' style='max-width:100%; margin-bottom:15px;'>\n"
                         image_markdown += "</details>\n"
         # --------------------------------------
@@ -79,6 +82,10 @@ culture_brief: "{culture_brief}"
 ### Notes
 Automated entry generated from master repository spreadsheet.
 """
+        with open(filename, 'w', encoding='utf-8') as out_file:
+            out_file.write(markdown_content)
+
+print("Algae profile posts successfully generated with targeted image galleries!")
         with open(filename, 'w', encoding='utf-8') as out_file:
             out_file.write(markdown_content)
 
