@@ -1,8 +1,14 @@
 import csv
 import os
+import shutil
 from datetime import datetime
 
-# Force the server to create the _posts folder if it is missing
+# WIPE OLD POSTS: This deletes the _posts folder and everything inside it 
+# so you never get ghost duplicates from older dates.
+if os.path.exists('_posts'):
+    shutil.rmtree('_posts')
+
+# Re-create a completely fresh, empty _posts folder
 os.makedirs('_posts', exist_ok=True)
 
 # The master folder where you uploaded your strain image folders
@@ -37,7 +43,7 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
         image_markdown = ""
         
         if strain_id:
-            # FIX: Keep exact capitalization and swap spaces for dashes (e.g., "UTEX 2244" -> "UTEX-2244")
+            # Keep exact capitalization and swap spaces for dashes (e.g., "UTEX 2244" -> "UTEX-2244")
             exact_folder_name = strain_id.replace(" ", "-").replace("/", "-").replace("\\", "-")
             strain_img_folder = f"{BASE_IMAGE_DIR}/{exact_folder_name}"
             
@@ -83,4 +89,4 @@ Automated entry generated from master repository spreadsheet.
         with open(filename, 'w', encoding='utf-8') as out_file:
             out_file.write(markdown_content)
 
-print("Algae profile posts successfully generated with exact-match image folders!")
+print("Purged old entries and successfully generated fresh algae profiles!")
