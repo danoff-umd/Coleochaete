@@ -66,15 +66,19 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
                 valid_exts = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
                 img_files = sorted([img for img in os.listdir(strain_img_folder) if img.lower().endswith(valid_exts)])
                 
-                if img_files:
+            if img_files:
+                    # Show the first 3 images normally
                     for img in img_files[:3]:
-                        web_path = f"/{strain_img_folder}/{img}"
+                        # The 4 curly braces tell Python to literally write {{ site.baseurl }}
+                        web_path = f"{{{{ site.baseurl }}}}/{strain_img_folder}/{img}"
                         image_markdown += f"![{title}]({web_path})\n\n"
                         
+                    # Drop the rest inside the hidden expandable drawer
                     if len(img_files) > 3:
-                        image_markdown += "<details>\n  <summary><strong>View all images</strong></summary>\n\n"
+                        image_markdown += "<details>\n"
+                        image_markdown += "  <summary><strong>View all images</strong></summary>\n\n"
                         for img in img_files[3:]:
-                            web_path = f"/{strain_img_folder}/{img}"
+                            web_path = f"{{{{ site.baseurl }}}}/{strain_img_folder}/{img}"
                             image_markdown += f"  <img src='{web_path}' alt='{title}' style='max-width:100%; margin-bottom:15px;'>\n"
                         image_markdown += "</details>\n"
         
