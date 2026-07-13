@@ -71,7 +71,7 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
                     for img in img_files[:3]:
                         # Make spaces safe for web URLs (e.g., "Image 1.JPG" -> "Image%201.JPG")
                         safe_img = urllib.parse.quote(img)
-                        web_path = f"/Coleochaete//{strain_img_folder}/{safe_img}"
+                        web_path = f"{{{{ '/{strain_img_folder}/{safe_img}' | relative_url }}}}"
                         image_markdown += f"![{title}]({web_path})\n\n"
                         
                     if len(img_files) > 3:
@@ -79,7 +79,7 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
                         image_markdown += "  <summary><strong>View all images</strong></summary>\n\n"
                         for img in img_files[3:]:
                             safe_img = urllib.parse.quote(img)
-                            web_path = f"/Coleochaete/{strain_img_folder}/{safe_img}"
+                            web_path = f"{{{{ '/{strain_img_folder}/{safe_img}' | relative_url }}}}"
                             image_markdown += f"  <img src='{web_path}' alt='{title}' style='max-width:100%; margin-bottom:15px;'>\n"
                         image_markdown += "</details>\n"
         
