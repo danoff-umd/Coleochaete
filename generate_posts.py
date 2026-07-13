@@ -1,6 +1,7 @@
 import csv
 import os
 import shutil
+import urllib.parse
 from datetime import datetime
 
 # ==========================================
@@ -61,32 +62,24 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
             
             if matched_folder:
                 strain_img_folder = f"{BASE_IMAGE_DIR}/{matched_folder}"
-                
-                # --- THE CASE-SENSITIVITY FIX ---
-                # Force every file in the folder to lowercase before processing
-                for item in os.listdir(strain_img_folder):
-                    lower_item = item.lower()
-                    if item != lower_item:
-                        old_path = os.path.join(strain_img_folder, item)
-                        new_path = os.path.join(strain_img_folder, lower_item)
-                        os.rename(old_path, new_path)
-                # --------------------------------
-                
                 valid_exts = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
-                # Now that everything is safely lowercase, grab the images
-                img_files = sorted([img for img in os.listdir(strain_img_folder) if img.endswith(valid_exts)])
+                
+                # Use .lower() here ONLY to find the files, without renaming them
+                img_files = sorted([img for img in os.listdir(strain_img_folder) if img.lower().endswith(valid_exts)])
                 
                 if img_files:
                     for img in img_files[:3]:
-                        # NOTE: Replace 'Your-Repository-Name' with your actual repository name!
-                        web_path = f"/Coleochaete/{strain_img_folder}/{img}"
+                        # Make spaces safe for web URLs (e.g., "Image 1.JPG" -> "Image%201.JPG")
+                        safe_img = urllib.parse.quote(img)
+                        web_path = f"/Coleochaete/{strain_img_folder}/{safe_img}"
                         image_markdown += f"![{title}]({web_path})\n\n"
                         
                     if len(img_files) > 3:
                         image_markdown += "<details>\n"
                         image_markdown += "  <summary><strong>View all images</strong></summary>\n\n"
                         for img in img_files[3:]:
-                            web_path = f"/Coleochaete/{strain_img_folder}/{img}"
+                            safe_img = urllib.parse.quote(img)
+                            web_path = f"/Coleochaete/{strain_img_folder}/{safe_img}"
                             image_markdown += f"  <img src='{web_path}' alt='{title}' style='max-width:100%; margin-bottom:15px;'>\n"
                         image_markdown += "</details>\n"
         
@@ -118,4 +111,4 @@ Automated entry generated from master repository spreadsheet.
         with open(filename, 'w', encoding='utf-8') as out_file:
             out_file.write(markdown_content)
 
-print("All posts processed cleanly, and image cases have been standardized!")
+print("All posts processed! Image names were kept exactly as-is to preserve links.")
