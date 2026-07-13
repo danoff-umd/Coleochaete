@@ -83,7 +83,3 @@ Automated entry generated from master repository spreadsheet.
             out_file.write(markdown_content)
 
 print("Algae profile posts successfully generated with automated image galleries!")
-        with open(filename, 'w', encoding='utf-8') as out_file:
-            out_file.write(markdown_content)
-
-print("Algae profile posts successfully generated!")
