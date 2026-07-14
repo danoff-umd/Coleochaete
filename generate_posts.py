@@ -22,6 +22,7 @@ def normalize_name(name):
 # ==========================================
 with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
     reader = csv.DictReader(f)
+    # This automatically strips spaces and makes column names lowercase
     reader.fieldnames = [name.strip().lower() for name in reader.fieldnames if name]
     
     for row in reader:
@@ -30,6 +31,8 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
         locality = row.get('locality', '').strip()
         culture_brief = row.get('culture_brief', '').strip()
         tags = row.get('tags', '').strip()
+        # 🚨 PULL THE NEW "NOTES" COLUMN HERE
+        notes_content = row.get('notes', '').strip()
 
         if not title:
             continue 
@@ -64,13 +67,12 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
                 strain_img_folder = f"{BASE_IMAGE_DIR}/{matched_folder}"
                 valid_exts = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
                 
-                # Use .lower() here ONLY to find the files, without renaming them
                 img_files = sorted([img for img in os.listdir(strain_img_folder) if img.lower().endswith(valid_exts)])
                 
                 if img_files:
                     for img in img_files[:3]:
-                        # Make spaces safe for web URLs (e.g., "Image 1.JPG" -> "Image%201.JPG")
                         safe_img = urllib.parse.quote(img)
+                        # We use relative_url so Jekyll perfectly maps the URL
                         web_path = f"{{{{ '/{strain_img_folder}/{safe_img}' | relative_url }}}}"
                         image_markdown += f"![{title}]({web_path})\n\n"
                         
@@ -85,6 +87,12 @@ with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
         
         if not image_markdown:
             image_markdown = "*No images available for this specimen yet.*\n"
+
+        # If notes_content is empty, show a fallback message
+        if not notes_content:
+            notes_markdown = "*No extra notes recorded for this specimen.*"
+        else:
+            notes_markdown = notes_content
 
         # ==========================================
         # 4. MARKDOWN LAYOUT TEMPLATE
@@ -106,9 +114,9 @@ culture_brief: "{culture_brief}"
 {image_markdown}
 
 ### Notes
-Automated entry generated from master repository spreadsheet.
+{notes_markdown}
 """
         with open(filename, 'w', encoding='utf-8') as out_file:
             out_file.write(markdown_content)
 
-print("All posts processed! Image names were kept exactly as-is to preserve links.")
+print("All posts processed! Custom notes have been embedded directly into the pages.")
