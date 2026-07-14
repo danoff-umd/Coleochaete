@@ -1,41 +1,41 @@
-﻿title,strain_id,locality,culture_brief,tags
-Coleochaete divergens/nitellarum,AMD-AU-01-1,"Busby's Pond, Australia",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete scutata,AMD-AU-01-2a,"Busby's Pond, Australia",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete scutata,AMD-AU-01-2b,"Busby's Pond, Australia",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete scutata,AMD-AU-01-2c,"Busby's Pond, Australia",HEPES-WC,"Strain information, Culturing notes"
-Chaetosphaeridium,AMD-AU-01-3,"Busby's Pond, Australia",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete nitellarum,AMD-LP-01-1,"Lilypons, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete scutata,AMD-LP-01-2,"Lilypons, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Chaetosphaeridium,AMD-PX-00-1a,"Cash Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete divergens,AMD-PX-01-1,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Chaetosphaeridium,AMD-PX-03-1,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Chaetosphaeridium,AMD-PX-03-2,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Chaetosphaeridium,AMD-PX-03-3,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete andreae,AMD-PX-03-4,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete andreae,AMD-PX-03-5,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete irregularis,AMD-PX-03-6,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete scutata,AMD-PX-05-2,"Iris Pond, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete scutata,AMD-PX-05-3,"Iris Pond, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete scutata,AMD-PX-05-4,"Iris Pond, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete scutata,AMD-PX-05-5,"Iris Pond, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Coloechaete circularis/andreae,AMD-PX-05-8,"Iris Pond, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete divergens,AMD-PX-06-1,"Iris Pond, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes"
-Coleochaete divergens,AMD-MQ1a,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes"
-Coleochaete divergens,AMD-MQ1b,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes"
-Coleochaete divergens,AMD-MQ1c,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes"
-Coleochaete circularis,AMD-MQ2,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes"
-Coleochaete circularis,AMD-MQ3,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes"
-Coleochaete circularis,AMD-MQ4a,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes"
-Coleochaete circularis,AMD-MQ4b,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes"
-Coleochaete circularis,AMD-MQ5,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes"
-Coleochaete circularis,AMD-MQ6,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes"
-Coleochaete pulvinata,AMD-TH1,"Lake Tomahawk, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes"
-Coleochaete pulvinata,AMD-TH2a,"Lake Tomahawk, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes"
-Coleochaete pulvinata,AMD-TH2b,"Lake Tomahawk, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes"
-Coleochaete scutata,AMD-TH3,"Lake Tomahawk, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes"
-Chaetosphaeridium,AMD-TH4,"Lake Tomahawk, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes"
-Coleochaete soluta/pulvinata,AMD-EK1,"Erickson Lake, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes"
-Coleochaete soluta/pulvinata,AMD-EK2,"Erickson Lake, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes"
-Coleochaete soluta/pulvinata,AMD-EK3,"Erickson Lake, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes"
-Coleochaete conchaeta ,AMD-EK4,"Erickson Lake, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes"
-Coleochaete soluta/pulvinata,AMD-Dry1 ,"Dry Lake, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes"
+﻿title,strain_id,locality,culture_brief,tags,notes
+Coleochaete divergens/nitellarum,AMD-AU-01-1,"Busby's Pond, Australia",HEPES-WC,"Strain information, Culturing notes",This strain was found growing overtop a the isolated strain of Coleochaete scutata from Australia. When the thalli are young they resemble Coleochaete divergens/nitellarum but as they grow older they more resemble Coleochaete conchaeta/pulvinata. Antheridia have been observed on older thalli but no zygotes have ever formed. Likely dioecious.
+Coleochaete scutata,AMD-AU-01-2a,"Busby's Pond, Australia",HEPES-WC,"Strain information, Culturing notes",Only one thalli was found from material isolated from Busby's pond. No striking differences from any other Coleochaete scutata. Genomic data will be interesting as this is likely of European or Asian descent based on Australian isolation from other continents. 
+Coleochaete scutata,AMD-AU-01-2b,"Busby's Pond, Australia",HEPES-WC,"Strain information, Culturing notes",Likely the same as AMD-AU-01-2a
+Coleochaete scutata,AMD-AU-01-2c,"Busby's Pond, Australia",HEPES-WC,"Strain information, Culturing notes",Likely the same as AMD-AU-01-2a
+Chaetosphaeridium,AMD-AU-01-3,"Busby's Pond, Australia",HEPES-WC,"Strain information, Culturing notes",Not seen during isolation. A hitchhiker from AMD-AU-01-2a
+Coleochaete nitellarum,AMD-LP-01-1,"Lilypons, Maryland, USA",HEPES-WC,"Strain information, Culturing notes",This strain was isolated from a Nitella sp. Thallus at Lilypons. Frequently moves its cellular contents from the first cell to the next during the first round of cell division. It is likely this is used for infiltration of the Coleochaete into the Nitella cell wall.
+Coleochaete scutata,AMD-LP-01-2,"Lilypons, Maryland, USA",HEPES-WC,"Strain information, Culturing notes","Large, slow growing Coleochaete scutata. Does not make many zoospores."
+Chaetosphaeridium,AMD-PX-00-1a,"Cash Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes",Found in early spring. Pretty much all Chaetosphaeridium look the same to me. 
+Coleochaete divergens,AMD-PX-01-1,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes",This strain was isolated at the same time as AMD-PX-06-1 however this organisms are very likely different species. If taken care of well and the media is changed at least once a week. The culture will being to sexually reproduce and zygotes will form in around 3 weeks to a month. Forms many more branches than AMD-PX-06-1
+Chaetosphaeridium,AMD-PX-03-1,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes",
+Chaetosphaeridium,AMD-PX-03-2,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes",
+Chaetosphaeridium,AMD-PX-03-3,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes",
+Coleochaete andreae,AMD-PX-03-4,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes","It is honestly quite difficult to tell that this species is actually Coleochaete, but through Calcafluor white staining I am able to see that they have sheathed hairs. I asked Krzysztof Spalik who then subsequently asked Hanna Szymanska about what this could be. Unfortunately they were unable to identify the organism. However based on her articles it appears most similar to Coleochaete andreae however it is likely not the same as the one described by Hanna Szymanska. This organism is likely related to Coleochaete circularis but how distant it is would need genomic data to confirm. "
+Coleochaete andreae,AMD-PX-03-5,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes",Likely the same as AMD-PX-03-4
+Coleochaete irregularis,AMD-PX-03-6,"Snowden Lake, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes","Isolate of this Coleochaete irregularis grow quite large, produce hairs roughly every 2-3 cells, and when fully mature, produce 3-D protrusions. "
+Coleochaete scutata,AMD-PX-05-2,"Iris Pond, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes",Looks like standard Coleochaete scutata
+Coleochaete scutata,AMD-PX-05-3,"Iris Pond, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes",Looks like standard Coleochaete scutata
+Coleochaete scutata,AMD-PX-05-4,"Iris Pond, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes",Looks like standard Coleochaete scutata
+Coleochaete scutata,AMD-PX-05-5,"Iris Pond, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes",Looks like standard Coleochaete scutata. Possibly does not make a hair at the first cell division. 
+Coloechaete circularis/andreae,AMD-PX-05-8,"Iris Pond, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes",Unsure if this is the same species as AMD-PX-03-4. Looks similar but there are subtle differences. This strain was isolated from a separate pond ~ a mile away. 
+Coleochaete divergens,AMD-PX-06-1,"Iris Pond, Patuxent Research Refuge, Maryland, USA",HEPES-WC,"Strain information, Culturing notes",This strain is likely a separate species from AMD-PX-01-1. It does not branch nearly as much and the branches are much longer. The center of the thalli tend to be very compact. I have never seen this strain sexually reproduce in culture.
+Coleochaete divergens,AMD-MQ1a,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes",This strain was the first to be found in Monacqua right by the shore on a stick. It was quite difficult to tell it was Coleochaete at first as it was just a mass of cells. It has sort of zig-zag cell division and when the thalli are large they appear like Coleochaete pulvintata although this is almost certainly more closely related to Coleochaete divergens. 
+Coleochaete divergens,AMD-MQ1b,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes",Likely the same as AMD-MQ1a
+Coleochaete divergens,AMD-MQ1c,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes",Likely the same as AMD-MQ1a
+Coleochaete circularis,AMD-MQ2,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes",I isolated a bunch of these guys from a section of Lake Monacqua that contained a lot of vegetation. I kept quite a few to check for cryptic speciation as shown by Hanna Szymanska. Will update once I check them further. 
+Coleochaete circularis,AMD-MQ3,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes",See AMD-MQ2
+Coleochaete circularis,AMD-MQ4a,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes",See AMD-MQ2
+Coleochaete circularis,AMD-MQ4b,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes",See AMD-MQ2
+Coleochaete circularis,AMD-MQ5,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes",See AMD-MQ2
+Coleochaete circularis,AMD-MQ6,"Lake Monacqua, Wisconsin, USA","HEPES-WC, MES-Volvox","Strain information, Culturing notes",See AMD-MQ2
+Coleochaete pulvinata,AMD-TH1,"Lake Tomahawk, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes",This is one of the first strains I isolated from Wisconsin. It made me realize the media we normally use (HEPES-WC pH 7.8) is not sufficient to grow a multitide of cultures and we are artificially selecting for individuals that are able to survive in our selective culture conditions. Most of these strains only grow in MES-Volvox pH 6.8 unless noted otherwise. 
+Coleochaete pulvinata,AMD-TH2a,"Lake Tomahawk, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes",Isolated from a separate thallus but might be the same species as AMD-TH1
+Coleochaete pulvinata,AMD-TH2b,"Lake Tomahawk, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes",This strain was isolated from the same thallus as AMD-TH2a although this one is actually able to grow in our HEPES-WC pH 7.8 which makes me question if this is really the same species or not
+Coleochaete scutata,AMD-TH3,"Lake Tomahawk, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes",Very slow growing Coleochaete scutata this one is odd as it makes very few if any hairs. Sheathe cells themselves still appear to be present. 
+Chaetosphaeridium,AMD-TH4,"Lake Tomahawk, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes",Large cell Chaetosphaeridium. Cells are about the same size as Coleochaete cells. 
+Coleochaete soluta/pulvinata,AMD-EK1,"Erickson Lake, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes","AMD-EK1, AMD-EK2, and AMD-EK3 may all be the same species and the appear to be most similar to other Coleochaete pulvinata or Coleochaete soluta. The are almost certainly neither and may be separate species from one another. Further DNA sequencing will be needed to confirm this. "
+Coleochaete soluta/pulvinata,AMD-EK2,"Erickson Lake, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes",See AMD-EK1
+Coleochaete soluta/pulvinata,AMD-EK3,"Erickson Lake, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes",See AMD-EK1
+Coleochaete conchaeta ,AMD-EK4,"Erickson Lake, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes",This was by far the hardest species to isolate and appears most similar to Coleochaete conchaeta. This was isolated not as a thallus but as a single zoospore found during thallus isolation on a piece of birch bark. The thalli growing on the birch bark were the most abundant species in lake Erickson and were shapped like little mounds. Currently I am not able to grow it in liquid culture but it was adapted fine to solid agar media 
+Coleochaete soluta/pulvinata,AMD-Dry1 ,"Dry Lake, Wisconsin, USA",MES-Volvox,"Strain information, Culturing notes",This strain appears to also be related to Coleochaete pulvinata/soluta however it has a distinct germling phase when compared to the other isolates. 
