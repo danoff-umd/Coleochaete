@@ -1,47 +1,118 @@
 import csv
 import os
+import shutil
+import urllib.parse
 from datetime import datetime
 
-# We ensure the folder exists, but we DO NOT delete it so we don't erase the specimen posts
+# ==========================================
+# 1. CLEAN SLATE: PURGE DUPLICATES
+# ==========================================
+if os.path.exists('_posts'):
+    shutil.rmtree('_posts')
+
 os.makedirs('_posts', exist_ok=True)
 
-# Read from the new dedicated literature spreadsheet
-with open('literature.csv', mode='r', encoding='utf-8-sig') as f:
+BASE_IMAGE_DIR = 'assets/images'
+
+def normalize_name(name):
+    return name.lower().replace(" ", "").replace("-", "").replace("_", "").replace(".", "").replace("/", "").replace("\\", "")
+
+# ==========================================
+# 2. READ CSV AND GENERATE POSTS
+# ==========================================
+with open('algae_data.csv', mode='r', encoding='utf-8-sig') as f:
     reader = csv.DictReader(f)
     reader.fieldnames = [name.strip().lower() for name in reader.fieldnames if name]
     
     for row in reader:
         title = row.get('title', '').strip()
+        strain_id = row.get('strain_id', '').strip()
+        locality = row.get('locality', '').strip()
+        culture_brief = row.get('culture_brief', '').strip()
         tags = row.get('tags', '').strip()
-        literature_citations = row.get('literature_citations', '').strip()
-        article_description = row.get('article_description', '').strip()
+        notes_content = row.get('notes', '').strip()
 
         if not title:
             continue 
 
         date_str = datetime.now().strftime("%Y-%m-%d")
-        clean_title = title.lower().replace(" ", "-").replace("/", "-").replace("\\", "-")
         
-        # We add "lit-" to the filename to prevent any naming overlaps with specimens
-        filename = f"_posts/{date_str}-lit-{clean_title}.md"
+        clean_title = title.lower().replace(" ", "-").replace("/", "-").replace("\\", "-")
+        clean_strain = strain_id.lower().replace(" ", "-").replace("/", "-").replace("\\", "-")
+        
+        if clean_strain:
+            filename = f"_posts/{date_str}-{clean_title}-{clean_strain}.md"
+        else:
+            filename = f"_posts/{date_str}-{clean_title}.md"
             
+        # ==========================================
+        # 3. AUTOMATED IMAGE SEARCH LOOP
+        # ==========================================
+        image_markdown = ""
+        
+        if strain_id and os.path.isdir(BASE_IMAGE_DIR):
+            target_normal = normalize_name(strain_id)
+            matched_folder = None
+            
+            for folder in os.listdir(BASE_IMAGE_DIR):
+                folder_path = os.path.join(BASE_IMAGE_DIR, folder)
+                if os.path.isdir(folder_path):
+                    if normalize_name(folder) == target_normal:
+                        matched_folder = folder
+                        break
+            
+            if matched_folder:
+                strain_img_folder = f"{BASE_IMAGE_DIR}/{matched_folder}"
+                valid_exts = ('.jpg', '.jpeg', '.png', '.gif', '.webp')
+                
+                img_files = sorted([img for img in os.listdir(strain_img_folder) if img.lower().endswith(valid_exts)])
+                
+                if img_files:
+                    for img in img_files[:3]:
+                        safe_img = urllib.parse.quote(img)
+                        web_path = f"{{{{ '/{strain_img_folder}/{safe_img}' | relative_url }}}}"
+                        image_markdown += f"![{title}]({web_path})\n\n"
+                        
+                    if len(img_files) > 3:
+                        image_markdown += "<details>\n"
+                        image_markdown += "  <summary><strong>View all images</strong></summary>\n\n"
+                        for img in img_files[3:]:
+                            safe_img = urllib.parse.quote(img)
+                            web_path = f"{{{{ '/{strain_img_folder}/{safe_img}' | relative_url }}}}"
+                            image_markdown += f"  <img src='{web_path}' alt='{title}' style='max-width:100%; margin-bottom:15px;'>\n"
+                        image_markdown += "</details>\n"
+        
+        if not image_markdown:
+            image_markdown = "*No images available for this specimen yet.*\n"
+
+        if not notes_content:
+            notes_markdown = "*No extra notes recorded for this specimen.*"
+        else:
+            notes_markdown = notes_content
+
+        # ==========================================
+        # 4. MARKDOWN LAYOUT TEMPLATE
+        # ==========================================
         markdown_content = f"""---
 layout: post
 title: "{title}"
 tags: [{tags}]
-literature_citations: "{literature_citations}"
-article_description: "{article_description}"
+strain_id: "{strain_id}"
+locality: "{locality}"
+culture_brief: "{culture_brief}"
 ---
 
-## {title}
+## Specimen Profile for {title}
+* **Strain ID:** {strain_id}
+* **Collection Locality:** {locality}
 
-**Citation:**
-{literature_citations}
+### Specimen Photo Gallery
+{image_markdown}
 
-**Description:**
-{article_description}
+### Notes
+{notes_markdown}
 """
         with open(filename, 'w', encoding='utf-8') as out_file:
             out_file.write(markdown_content)
 
-print("Literature entries successfully generated from literature.csv!")
+print("Algae posts successfully processed into the _posts folder!")
