@@ -20,6 +20,7 @@ jobs:
 
     - name: Run generation script
       run: python generate_posts.py
+      run: python generate_literature.py
 
     - name: Commit and Push Changes
       run: |
